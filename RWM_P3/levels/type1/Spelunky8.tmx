@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="12" height="8" tilewidth="50" tileheight="50">
+ <tileset firstgid="1" name="ground_dirt" tilewidth="50" tileheight="50">
+  <image source="../ground_dirt.png" width="50" height="50"/>
+ </tileset>
+ <objectgroup name="dirt">
+  <object type="0" gid="1" x="0" y="50"/>
+  <object type="0" gid="1" x="50" y="50"/>
+  <object type="0" gid="1" x="100" y="50"/>
+  <object type="0" gid="1" x="150" y="50"/>
+  <object type="0" gid="1" x="200" y="50"/>
+  <object type="0" gid="1" x="250" y="50"/>
+  <object type="0" gid="1" x="300" y="50"/>
+  <object type="0" gid="1" x="350" y="50"/>
+  <object type="0" gid="1" x="400" y="50"/>
+  <object type="0" gid="1" x="450" y="50"/>
+  <object type="0" gid="1" x="500" y="50"/>
+  <object type="0" gid="1" x="550" y="50"/>
+  <object type="0" gid="1" x="50" y="150"/>
+  <object type="0" gid="1" x="100" y="150"/>
+  <object type="0" gid="1" x="250" y="150"/>
+  <object type="0" gid="1" x="150" y="150"/>
+  <object type="0" gid="1" x="200" y="150"/>
+  <object type="0" gid="1" x="300" y="150"/>
+  <object type="0" gid="1" x="350" y="150"/>
+  <object type="0" gid="1" x="400" y="150"/>
+  <object type="0" gid="1" x="450" y="150"/>
+  <object type="0" gid="1" x="500" y="150"/>
+  <object type="0" gid="1" x="550" y="150"/>
+  <object type="0" gid="1" x="50" y="300"/>
+  <object type="0" gid="1" x="50" y="350"/>
+  <object type="0" gid="1" x="100" y="350"/>
+  <object type="0" gid="1" x="150" y="300"/>
+  <object type="0" gid="1" x="150" y="350"/>
+  <object type="0" gid="1" x="300" y="300"/>
+  <object type="0" gid="1" x="300" y="250"/>
+  <object type="0" gid="1" x="350" y="250"/>
+  <object type="0" gid="1" x="350" y="300"/>
+  <object type="0" gid="1" x="400" y="250"/>
+  <object type="0" gid="1" x="0" y="400"/>
+  <object type="0" gid="1" x="50" y="400"/>
+  <object type="0" gid="1" x="100" y="400"/>
+  <object type="0" gid="1" x="150" y="400"/>
+  <object type="0" gid="1" x="200" y="400"/>
+  <object type="0" gid="1" x="250" y="400"/>
+  <object type="0" gid="1" x="300" y="400"/>
+  <object type="0" gid="1" x="350" y="400"/>
+  <object type="0" gid="1" x="400" y="400"/>
+  <object type="0" gid="1" x="450" y="400"/>
+  <object type="0" gid="1" x="500" y="400"/>
+  <object type="0" gid="1" x="550" y="400"/>
+  <object type="50" x="250" y="300" width="50" height="50"/>
+  <object type="21" x="350" y="50" width="50" height="50"/>
+  <object type="22" x="100" y="250" width="50" height="50"/>
+  <object type="2" x="200" y="50" width="50" height="50"/>
+ </objectgroup>
+ <objectgroup name="bg" visible="0">
+  <object type="14" x="200" y="350" width="50" height="50"/>
+  <object type="14" x="150" y="100" width="50" height="50"/>
+  <object type="14" x="100" y="0" width="50" height="50"/>
+  <object type="14" x="50" y="0" width="50" height="50"/>
+  <object type="14" x="150" y="300" width="50" height="50"/>
+  <object type="14" x="550" y="250" width="50" height="50"/>
+  <object type="14" x="250" y="300" width="50" height="50"/>
+  <object type="14" x="300" y="350" width="50" height="50"/>
+  <object type="14" x="400" y="100" width="50" height="50"/>
+  <object type="14" x="50" y="350" width="50" height="50"/>
+  <object type="14" x="350" y="150" width="50" height="50"/>
+  <object type="14" x="350" y="350" width="50" height="50"/>
+  <object type="14" x="50" y="50" width="50" height="50"/>
+  <object type="14" x="450" y="200" width="50" height="50"/>
+  <object type="14" x="550" y="150" width="50" height="50"/>
+  <object type="14" x="400" y="200" width="50" height="50"/>
+  <object type="14" x="100" y="100" width="50" height="50"/>
+  <object type="14" x="550" y="300" width="50" height="50"/>
+  <object type="14" x="450" y="350" width="50" height="50"/>
+  <object type="14" x="250" y="150" width="50" height="50"/>
+  <object type="14" x="250" y="50" width="50" height="50"/>
+  <object type="14" x="0" y="0" width="50" height="50"/>
+  <object type="14" x="300" y="150" width="50" height="50"/>
+  <object type="14" x="550" y="0" width="50" height="50"/>
+  <object type="14" x="250" y="100" width="50" height="50"/>
+  <object type="14" x="200" y="300" width="50" height="50"/>
+  <object type="14" x="0" y="350" width="50" height="50"/>
+  <object type="14" x="0" y="200" width="50" height="50"/>
+  <object type="14" x="450" y="250" width="50" height="50"/>
+  <object type="14" x="0" y="150" width="50" height="50"/>
+  <object type="14" x="400" y="300" width="50" height="50"/>
+  <object type="14" x="500" y="250" width="50" height="50"/>
+  <object type="14" x="300" y="100" width="50" height="50"/>
+  <object type="14" x="450" y="50" width="50" height="50"/>
+  <object type="14" x="250" y="250" width="50" height="50"/>
+  <object type="14" x="500" y="50" width="50" height="50"/>
+  <object type="14" x="300" y="250" width="50" height="50"/>
+  <object type="14" x="50" y="100" width="50" height="50"/>
+  <object type="14" x="500" y="150" width="50" height="50"/>
+  <object type="14" x="350" y="250" width="50" height="50"/>
+  <object type="14" x="450" y="100" width="50" height="50"/>
+  <object type="14" x="500" y="300" width="50" height="50"/>
+  <object type="14" x="100" y="350" width="50" height="50"/>
+  <object type="14" x="300" y="300" width="50" height="50"/>
+  <object type="14" x="0" y="50" width="50" height="50"/>
+  <object type="14" x="0" y="250" width="50" height="50"/>
+  <object type="14" x="450" y="300" width="50" height="50"/>
+  <object type="14" x="300" y="200" width="50" height="50"/>
+  <object type="14" x="100" y="150" width="50" height="50"/>
+  <object type="14" x="200" y="250" width="50" height="50"/>
+  <object type="14" x="500" y="200" width="50" height="50"/>
+  <object type="14" x="550" y="50" width="50" height="50"/>
+  <object type="14" x="100" y="200" width="50" height="50"/>
+  <object type="14" x="550" y="200" width="50" height="50"/>
+  <object type="14" x="250" y="200" width="50" height="50"/>
+  <object type="14" x="350" y="200" width="50" height="50"/>
+  <object type="14" x="150" y="350" width="50" height="50"/>
+  <object type="14" x="0" y="300" width="50" height="50"/>
+  <object type="14" x="200" y="50" width="50" height="50"/>
+  <object type="14" x="150" y="150" width="50" height="50"/>
+  <object type="14" x="400" y="50" width="50" height="50"/>
+  <object type="14" x="250" y="0" width="50" height="50"/>
+  <object type="14" x="500" y="350" width="50" height="50"/>
+  <object type="14" x="300" y="50" width="50" height="50"/>
+  <object type="14" x="50" y="250" width="50" height="50"/>
+  <object type="14" x="450" y="150" width="50" height="50"/>
+  <object type="14" x="150" y="50" width="50" height="50"/>
+  <object type="14" x="150" y="200" width="50" height="50"/>
+  <object type="14" x="300" y="0" width="50" height="50"/>
+  <object type="14" x="50" y="300" width="50" height="50"/>
+  <object type="14" x="200" y="200" width="50" height="50"/>
+  <object type="14" x="150" y="0" width="50" height="50"/>
+  <object type="14" x="350" y="100" width="50" height="50"/>
+  <object type="14" x="200" y="150" width="50" height="50"/>
+  <object type="14" x="200" y="100" width="50" height="50"/>
+  <object type="14" x="550" y="350" width="50" height="50"/>
+  <object type="14" x="100" y="50" width="50" height="50"/>
+  <object type="14" x="100" y="300" width="50" height="50"/>
+  <object type="14" x="50" y="150" width="50" height="50"/>
+  <object type="14" x="500" y="100" width="50" height="50"/>
+  <object type="14" x="150" y="250" width="50" height="50"/>
+  <object type="14" x="400" y="0" width="50" height="50"/>
+  <object type="14" x="400" y="350" width="50" height="50"/>
+  <object type="14" x="100" y="250" width="50" height="50"/>
+  <object type="14" x="200" y="0" width="50" height="50"/>
+  <object type="14" x="0" y="100" width="50" height="50"/>
+  <object type="14" x="550" y="100" width="50" height="50"/>
+  <object type="14" x="350" y="300" width="50" height="50"/>
+  <object type="14" x="450" y="0" width="50" height="50"/>
+  <object type="14" x="400" y="250" width="50" height="50"/>
+  <object type="14" x="50" y="200" width="50" height="50"/>
+  <object type="14" x="350" y="0" width="50" height="50"/>
+  <object type="14" x="500" y="0" width="50" height="50"/>
+  <object type="14" x="400" y="150" width="50" height="50"/>
+  <object type="14" x="350" y="50" width="50" height="50"/>
+  <object type="14" x="250" y="350" width="50" height="50"/>
+ </objectgroup>
+</map>

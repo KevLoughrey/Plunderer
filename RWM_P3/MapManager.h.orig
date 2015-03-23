@@ -1,0 +1,115 @@
+#pragma once
+
+#include <iostream>
+#include <vector>
+#include <SDL_image.h>
+#include <Box2D\Box2D.h>
+#include <Tmx.h>
+#include <TileBase.h>
+#include <Room.h>
+#include <string>
+#include <SoundManager.h>
+
+class MapManager
+{
+public:
+	MapManager(int level, 
+			   SDL_Renderer *renderer);
+	~MapManager();
+	void LoadObjects(std::vector<std::string> paths, 
+					 std::vector<Room*> *rooms);
+	void Render(b2Vec2 offset);
+	std::vector<b2Vec2> BuildLevel();
+	
+	
+	void BuildWorld(int sp, int counter, std::vector<b2Vec2> *rooms);
+	std::vector<int> getTypes();
+	std::vector<b2Vec2> getBgPos();
+	std::vector<int> getBgTypes();
+	std::vector<int> getBgTypesOnes();
+	std::vector<b2Vec2> getBgPosOnes();
+	std::vector<b2Vec2> getBgPositions();
+	std::vector<int> getBlockHeights();
+	b2Vec2 GetStartPoint();
+	b2Vec2 GetEndPoint();
+	b2Vec2 GetHourglassPos();
+	b2Vec2 GetSwitchPos();
+	b2Vec2 GetHealthPickupPos();
+	void AddToVectors();
+	void LoadWorldBorder();
+	void DecreaseNumBombs();
+	void IncreaseGold();
+	void AddLevel();
+	void DecreseHealth(int decrease);
+	void BuyBomb();
+	void AddBomb();
+	void ResetHud();
+<<<<<<< HEAD
+=======
+	void ResetLevel();
+	void AddLife();
+>>>>>>> 04768fa137e0098ef838912de738f09b87f67134
+	int GetLevel();
+	int GetCompletedLevels();
+	int GetLives();
+	int GetBombs();
+	int GetJewels();
+	bool CheckPlayerDead();
+<<<<<<< HEAD
+	void SetDead();
+=======
+>>>>>>> 04768fa137e0098ef838912de738f09b87f67134
+
+protected:
+	bool m_alive;
+	int m_completedLevels;
+	SDL_Renderer *m_renderer;
+	Tmx::Map *m_map;
+	int m_level;
+	SDL_Rect m_pos;
+	const Tmx::Layer *m_currLayer;
+	SDL_Texture *m_texture;
+	std::vector<Room*> m_type0Rooms;
+	std::vector<Room*> m_type1Rooms;
+	std::vector<Room*> m_type2Rooms;
+	std::vector<Room*> m_type3Rooms;
+	std::vector<std::string> m_type0Paths;
+	std::vector<std::string> m_type1Paths;
+	std::vector<std::string> m_type2Paths;
+	std::vector<std::string> m_type3Paths;
+	std::vector<b2Vec2> m_row0Offsets;
+	std::vector<b2Vec2> m_row1Offsets;
+	std::vector<b2Vec2> m_row2Offsets;
+	std::vector<b2Vec2> m_row3Offsets;
+	std::vector<b2Vec2> m_levelBlockPositions;
+	std::vector<b2Vec2> m_backPositionsOnes;
+	std::vector<b2Vec2> m_backPositions;
+	std::vector<int> m_backTypes;
+	std::vector<int> m_blockTypes;
+	std::vector<int> m_blockTypesOnes;
+	std::vector<b2Vec2> m_bgPositions;
+	std::vector<int> m_blockHeights;
+	std::vector<b2Vec2> vec;
+	std::vector<b2Vec2> vecBack;
+	std::vector<int> heights;
+	std::vector<int> vecType;
+	std::vector<int> vecBackType;
+
+	b2Vec2 m_hourGlassPos;
+	b2Vec2 m_startPoint;
+	b2Vec2 m_endPoint;
+	b2Vec2 m_switchPos;
+<<<<<<< HEAD
+=======
+	b2Vec2 m_healthPos;
+>>>>>>> 04768fa137e0098ef838912de738f09b87f67134
+
+	int m_goldAmount;
+	int m_numBombs;
+	int m_health;
+<<<<<<< HEAD
+=======
+
+	bool healthPosAssinged;
+>>>>>>> 04768fa137e0098ef838912de738f09b87f67134
+};

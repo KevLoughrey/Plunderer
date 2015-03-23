@@ -1,0 +1,519 @@
+#include <Game.h>
+
+Game::Game(SDL_Renderer* renderer,
+		   b2World* bworld,
+		   MapManager *mapManager,
+		   Subject *subject) 
+		   : m_renderer(renderer), 
+		   m_world(bworld),
+		   m_rewindTime(0),
+		   m_count(0),
+		   m_restart(false),
+		   m_mainMenu(false),
+		   m_mapManager(mapManager),
+		   m_subject(subject),
+		   m_scarabsActive(false),
+		   m_scarabCount(0),
+		   m_enemyCount(0),
+		   m_shakeTimer(0)
+{	
+	m_endLevel = false;
+	pickedUp = false;
+	m_bgBlocks = std::vector<BgBlock*>();
+	m_blocks = std::vector<DirtBlock*>();
+	m_ladders = std::vector<Ladder*>();
+	m_torches = std::vector<Torch*>();
+	m_pickUps = std::vector<Pickup*>();
+	m_spikes = std::vector<Spikes*>();
+	m_arrowTraps = std::vector<ArrowTrap*>();
+
+	std::vector<b2Vec2> positions = m_mapManager->BuildLevel();
+	std::vector<int> types = m_mapManager->getTypes();
+	std::vector<b2Vec2> bgPositions = m_mapManager->getBgPositions();
+	std::vector<int> bgTypes = m_mapManager->getBgTypes();
+	std::vector<int> blockHeights = m_mapManager->getBlockHeights();
+	m_startDoor = new Door(m_world,m_renderer,m_mapManager->GetStartPoint(),1);
+	m_endDoor = new Door(m_world,m_renderer,m_mapManager->GetEndPoint(),2);
+	m_player = new Player(m_world, b2Vec2(30, 45), m_mapManager->GetStartPoint(), m_renderer, m_subject,m_mapManager);
+	m_hud = new HUD(m_renderer, m_mapManager);
+	m_enemyFactory = new EnemyFactory();
+	std::vector<b2Vec2> pos = m_mapManager->getBgPosOnes();
+	std::vector<int> bgTypesOnes = m_mapManager->getBgTypesOnes();
+
+	m_lifePickup.push_back(new Life(m_world,b2Vec2(50,50),mapManager->GetHealthPickupPos(),renderer, m_subject));
+
+	for (int k = 0; k < pos.size(); ++k)
+	{
+		m_bgBlocksOnes.push_back(new BgBlock(m_renderer, pos.at(k), bgTypesOnes.at(k)));
+	}
+	for (int x = 0; x < bgPositions.size(); ++x)
+	{
+		m_bgBlocks.push_back(new BgBlock(m_renderer,bgPositions.at(x),bgTypes.at(x)));
+	}
+	for (int i = 0; i < positions.size(); ++i)
+	{
+		if(types.at(i) == 0)
+		{
+			m_blocks.push_back(new DirtBlock(m_world,b2Vec2(50,50), positions.at(i), m_renderer,types.at(i)));
+		}
+		else if(types.at(i) == 60)
+		{
+			m_blocks.push_back(new DirtBlock(m_world,b2Vec2(50,50), positions.at(i), m_renderer,types.at(i)));
+		}
+		else if (types.at(i) == 2)
+		{	
+			GenerateEnemy(positions.at(i),types.at(i));
+		}
+		else if (types.at(i) == 3)
+		{	
+			GenerateEnemy(positions.at(i),types.at(i));
+		}
+		else if (types.at(i) == 4)
+		{	
+			GenerateEnemy(positions.at(i),types.at(i));
+		}
+		else if (types.at(i) == 20)
+		{
+			m_ladders.push_back(new Ladder(m_world,b2Vec2(50,50),positions.at(i), m_renderer));
+		}
+		else if (types.at(i) == 21)
+		{
+			m_pickUps.push_back(new Pickup(m_world,b2Vec2(35,30),positions.at(i), m_renderer, subject));
+		}
+		else if (types.at(i) == 22)
+		{
+			m_spikes.push_back(new Spikes(m_world,b2Vec2(45,40),positions.at(i),m_renderer));
+		}
+		else if (types.at(i) == 23)
+		{
+			m_arrowTraps.push_back(new ArrowTrap(m_world,b2Vec2(50,50),positions.at(i),m_renderer,types.at(i)));
+		}
+		else if (types.at(i) == 24)
+		{
+			m_arrowTraps.push_back(new ArrowTrap(m_world,b2Vec2(50,50),positions.at(i),m_renderer,types.at(i)));
+		}
+		else if (types.at(i) == 17)
+		{
+			m_torches.push_back(new Torch(m_renderer,positions.at(i)));
+		}
+	}	
+
+}
+
+Game::~Game()
+{
+	EnemyManager::Instance()->DestroyAll();
+	for (int i = 0; i < m_blocks.size(); ++i) 
+	{
+		if (m_blocks.at(i)->ShouldRemove())
+		{
+			m_blocks.at(i)->DestroyBody();
+		}
+	}
+
+	//delete m_player;
+	/*delete m_mapManager;*/
+	/*delete m_rewindTexture1;
+	delete m_rewindTexture2;
+	delete m_rewindTexture3;
+	delete m_rewindTexture4;*/
+	delete m_endDoor;
+	delete m_hud;
+	for (int i = 0; i < m_lifePickup.size(); ++i)
+	{
+		delete m_lifePickup.at(i);
+	}
+	for(int i = 0; i < m_blocks.size(); ++i)
+	{
+		delete m_blocks.at(i);
+	}	
+	for (int i = 0; i < m_bgBlocks.size(); ++i)
+	{
+		delete m_bgBlocks.at(i);	
+	}
+	delete m_startDoor;	
+
+	for (int i = 0; i < m_bgBlocksOnes.size(); ++i)
+	{
+		delete m_bgBlocksOnes.at(i);	
+	}
+	for(int i = 0; i < m_ladders.size(); ++i)
+	{
+		delete m_ladders.at(i);
+	}
+	for(int i =0; i < m_pickUps.size(); ++i)
+	{
+		delete m_pickUps.at(i);
+	}
+	for(int i =0; i < m_spikes.size(); ++i)
+	{
+		delete m_spikes.at(i);
+	}	
+	for(int i =0; i < m_arrowTraps.size(); ++i)
+	{
+		delete m_arrowTraps.at(i);
+	}
+	for(int i =0; i < m_torches.size(); ++i)
+	{
+		delete m_torches.at(i);
+	}	
+}
+
+void Game::GenerateEnemy(b2Vec2 position,int type)
+{
+	if (m_mapManager->GetLevel() == 0 && type == 2)
+	{
+		EnemyManager::Instance()->AddSnake( m_enemyFactory->CreateSnake(m_world, position, m_renderer, m_subject));
+	}
+	else if (m_mapManager->GetLevel() == 1 && type == 3)
+	{
+		EnemyManager::Instance()->AddMummy( m_enemyFactory->CreateMummy(m_world, position, m_renderer, m_subject));
+	}
+	else if (m_mapManager->GetLevel() == 1 && type == 4)
+	{
+		if (m_enemyCount % 2 == 0)
+		{
+			EnemyManager::Instance()->AddBat( m_enemyFactory->CreateBat(m_world, position, m_renderer, m_subject));
+		}
+	}
+	else if (m_mapManager->GetLevel() == 2 && type == 2)
+	{
+		if (m_enemyCount % 2 == 0)
+		{
+			EnemyManager::Instance()->AddSnake( m_enemyFactory->CreateSnake(m_world, position, m_renderer, m_subject));
+		}
+	}
+	else if (m_mapManager->GetLevel() == 2 && type == 3)
+	{
+		EnemyManager::Instance()->AddMummy( m_enemyFactory->CreateMummy(m_world, position, m_renderer, m_subject));
+	}
+	else if (m_mapManager->GetLevel() == 2 && type == 4)
+	{
+		if(m_enemyCount % 2 == 0)
+		{
+			EnemyManager::Instance()->AddBat( m_enemyFactory->CreateBat(m_world, position, m_renderer, m_subject));
+		}
+	}
+	else if (m_mapManager->GetLevel() >= 3)
+	{
+		switch(type)
+		{
+		case 2:
+			EnemyManager::Instance()->AddSnake( m_enemyFactory->CreateSnake(m_world, position, m_renderer, m_subject));
+			break;
+		case 3:
+			EnemyManager::Instance()->AddMummy( m_enemyFactory->CreateMummy(m_world, position, m_renderer, m_subject));
+			break;
+		case 4:
+			EnemyManager::Instance()->AddBat( m_enemyFactory->CreateBat(m_world, position, m_renderer, m_subject));
+			break;
+
+		break;
+		}
+	}
+
+
+
+	m_enemyCount++;
+}
+
+void Game::CreateScarabs()
+{
+	for (int i = 0; i < 50; ++i)
+	{
+		int random = rand()%(800-400 + 1) + 400;
+		scarabs.push_back(new Scarab(m_world, b2Vec2(10, 10), b2Vec2(-random, -random), m_renderer));
+	}
+	m_scarabsActive = true;
+}
+
+void Game::CheckPickupDead()
+{
+	for (int i = 0; i < m_pickUps.size(); ++i) 
+	{
+		if (m_pickUps.at(i)->GetIsDead()) 
+		{
+			delete m_pickUps.at(i);
+			m_pickUps.erase(m_pickUps.begin() + i);
+		}
+	}
+}
+
+void Game::CheckLifePickup()
+{
+	for (int i = 0; i < m_lifePickup.size(); ++i) 
+	{
+		if (m_lifePickup.at(i)->GetIsDead()) 
+		{
+			delete m_lifePickup.at(i);
+			m_lifePickup.erase(m_lifePickup.begin() + i);
+		}
+	}
+}
+
+
+void Game::Update(double deltaTime) 
+{	
+	if (m_scarabCount <= 2400)
+	{
+			m_scarabCount++;
+	}
+	if (m_scarabCount % 2100 == 0 && !m_scarabsActive)
+	{
+		SoundManager::getSoundManager()->PlayScarabSound();
+	}
+	if (m_scarabCount % 2400 == 0 && !m_scarabsActive)
+	{
+		CreateScarabs();
+	}
+	CheckZoom();
+	if(m_shakeTimer > 0)
+	{
+		m_shakeTimer -= deltaTime;
+	}
+
+	if (KeyboardManager::getKeys()->Key_B)
+	{
+		m_mapManager->BuyBomb();
+	}
+		
+	if (KeyboardManager::getKeys()->Key_Q)
+	{
+		m_restart = true;
+	}
+	if (KeyboardManager::getKeys()->Key_W)
+	{
+		m_mainMenu = true;
+	}
+
+	CheckPickupDead();
+	CheckLifePickup();
+	EnemyManager::Instance()->Update(m_world,deltaTime);
+
+	for (int i = 0; i < m_blocks.size(); ++i) 
+	{
+		m_blocks.at(i)->Update(deltaTime);
+	}
+	for (int i = 0; i < m_blocks.size(); ++i) 
+	{
+		if(m_blocks.at(i)->ShouldRemove())
+		{
+			m_blocks.erase(m_blocks.begin()+i);
+		}
+	}
+	if(m_player->Update(deltaTime))
+	{
+		m_shakeTimer = 0.5;
+	}
+}
+
+void Game::CheckZoom()
+{
+	if (KeyboardManager::getKeys()->Key_P)
+	{
+		TileBase::getBase()->AddZoom();
+	}
+	if (KeyboardManager::getKeys()->Key_O)
+	{
+		TileBase::getBase()->MinusZoom();
+	}
+}
+
+bool Game::CheckPlayerAlive()
+{
+	return m_player->CheckDead();
+}
+
+bool Game::CheckEnd()
+{
+	return m_endDoor->GetAnimEnded();
+}
+
+bool Game::CheckRestart()
+{
+	return m_restart;
+}
+
+bool Game::CheckBackToMain()
+{
+	return m_mainMenu;
+}
+
+void Game::AnimEnd()
+{
+	if (m_endDoor->CheckCollision())
+	{
+		m_endDoor->PlayClose();
+	}
+}
+
+
+void Game::Render() 
+{
+	float theZoomScale = TileBase::getBase()->m_zoomScale;
+
+	int leftEdge = -CONSTANTS::MAP_LEFT_BORDER;
+	int rightEdge = CONSTANTS::MAP_RIGHT_BORDER - 
+					(CONSTANTS::SCREEN_WIDTH / theZoomScale);
+
+	int topEdge = CONSTANTS::MAP_LEFT_BORDER;
+	int bottomEdge = -CONSTANTS::MAP_BOTTOM_BORDER + 
+					(CONSTANTS::SCREEN_HEIGHT / theZoomScale);
+
+	SDL_RenderSetScale(m_renderer,theZoomScale,theZoomScale);
+
+	b2Vec2 offset = b2Vec2(	(m_player->GetPosition().x * METRESTOPIXELS) - CONSTANTS::SCREEN_WIDTH / (2 * theZoomScale), 
+							(m_player->GetPosition().y * METRESTOPIXELS) + CONSTANTS::SCREEN_HEIGHT / (2 * theZoomScale));
+
+	if (offset.x < leftEdge)
+	{
+		offset.x = leftEdge;
+	}
+	else if (offset.x > rightEdge)
+	{
+		offset.x = rightEdge;
+	}
+	if (offset.y > topEdge)
+	{
+		offset.y = topEdge;
+	}
+	else if (offset.y < bottomEdge)
+	{
+		offset.y = bottomEdge;
+	}
+
+
+	if(m_shakeTimer > 0)
+	{
+		offset.x += rand()%10;
+		offset.y += rand()%10;
+	}
+
+
+
+	for (int i = 0; i < m_bgBlocks.size(); ++i)
+	{
+		m_bgBlocks.at(i)->Render(offset);
+	}
+
+	for (int i = 0; i < m_spikes.size(); ++i)
+	{
+		m_spikes.at(i)->Render(offset);
+	}
+
+	for (int i = 0; i < m_torches.size(); ++i)
+	{
+		m_torches.at(i)->Render(offset);
+	}
+
+	m_startDoor->Render(offset);
+	if (m_endDoor->CheckCollision())
+	{
+		m_player->setDraw(false);
+	}
+	m_endDoor->Render(offset);
+	
+	for (int i = 0; i < m_lifePickup.size(); ++i)
+	{
+		m_lifePickup.at(i)->Render(offset);
+	}
+
+	for (int i = 0; i < m_arrowTraps.size(); ++i)
+	{
+		m_arrowTraps.at(i)->Render(offset);
+	}
+
+	for (int i = 0; i < m_ladders.size(); ++i)
+	{
+		m_ladders.at(i)->Render(offset);
+	}
+
+	for (int i = 0; i < m_pickUps.size(); ++i)
+	{
+		m_pickUps.at(i)->Render(offset);
+	}
+
+	m_player->Render(offset);
+	EnemyManager::Instance()->Render(offset);
+
+	for (int i = 0; i < m_blocks.size(); ++i) 
+	{
+		m_blocks.at(i)->Render(offset);
+	}
+
+	for (int i = 0; i < m_bgBlocksOnes.size(); ++i)
+	{
+		m_bgBlocksOnes.at(i)->Render(offset);
+	}
+
+	m_player->RenderExplosion(offset);
+
+	if (m_scarabsActive)
+	{
+		for (int i = 0; i < scarabs.size(); ++i)
+		{
+			scarabs.at(i)->Flock(scarabs, m_player->GetPosition());
+			scarabs.at(i)->Render(offset);
+		}
+	}
+
+	SDL_Rect stretchRect;
+	stretchRect.x = 0;
+	stretchRect.y = 0;
+	stretchRect.w = CONSTANTS::SCREEN_WIDTH / theZoomScale;
+	stretchRect.h = CONSTANTS::SCREEN_HEIGHT / theZoomScale;
+
+	if (KeyboardManager::getKeys()->Key_R && m_hud->GetHourALive())
+	{
+		m_hud->SetVisible(false);
+		m_player->Rewind();
+		m_count++;
+		++m_rewindTime;
+		if (m_rewindTime == 11)
+		{
+			m_rewindTime = 0;
+		}
+		if (m_rewindTime < 3)
+		{
+			SDL_RenderCopyEx( m_renderer, TileBase::getBase()->m_textureRewind1, NULL, &stretchRect, 0, NULL, SDL_RendererFlip::SDL_FLIP_NONE );
+		}
+		else if (m_rewindTime < 6)
+		{
+			SDL_RenderCopyEx( m_renderer, TileBase::getBase()->m_textureRewind2, NULL, &stretchRect, 0, NULL, SDL_RendererFlip::SDL_FLIP_NONE );
+		}
+		else if (m_rewindTime < 9)
+		{
+			SDL_RenderCopyEx( m_renderer, TileBase::getBase()->m_textureRewind3, NULL, &stretchRect, 0, NULL, SDL_RendererFlip::SDL_FLIP_NONE );
+		}
+		else if (m_rewindTime < 12)
+		{
+			SDL_RenderCopyEx( m_renderer, TileBase::getBase()->m_textureRewind4, NULL, &stretchRect, 0, NULL, SDL_RendererFlip::SDL_FLIP_NONE );
+		}
+
+		if (m_count == 600)
+		{
+			m_hud->SetHOurAlive(false);
+			m_count = 0;
+		}
+
+	}
+	else
+	{
+		if (m_count != 0)
+		{
+			m_hud->SetHOurAlive(false);
+			m_count = 0;
+		}
+		m_hud->SetVisible(true);
+
+		SDL_Rect stretchRect2;
+		stretchRect2.x = 0;
+		stretchRect2.y = 0;
+		stretchRect2.w = CONSTANTS::SCREEN_WIDTH / theZoomScale;
+		stretchRect2.h = CONSTANTS::SCREEN_HEIGHT / theZoomScale;
+
+		SDL_RenderCopyEx( m_renderer, TileBase::getBase()->m_textureBorder, NULL, &stretchRect2, 0, NULL, SDL_RendererFlip::SDL_FLIP_NONE );
+	}
+
+	m_hud->Render();
+}

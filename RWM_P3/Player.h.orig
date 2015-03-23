@@ -1,0 +1,205 @@
+#pragma once
+
+#include <Box2D\Box2D.h>
+#include <KeyboardManager.h>
+#include <BaseObject.h>
+
+#include <Bomb.h>
+#include <Explosion.h>
+#include <vector>
+
+#include <Memento.h>
+#include <TileBase.h>
+#include <string>
+#include <PacketStream.h>
+
+#include <FSM.h>
+#include <PlayerState.h>
+#include <PlayerIdle1.h>
+#include <PlayerIdle2.h>
+#include <PlayerIdle3.h>
+#include <PlayerWalk.h>
+#include <PlayerJump.h>
+#include <PlayerClimb.h>
+#include <PlayerThrowBomb.h>
+#include <PlayerSprinting.h>
+#include <PlayerDying.h>
+#include <PlayerSprintJump.h>
+#include <PlayerGrab.h>
+#include <PlayerWhipState.h>
+
+#include <Subject.h>
+#include <sstream>
+
+#include <RaycastListener.h>
+#include <Mummy.h>
+#include <MapManager.h>
+
+
+class LeftCommand;
+class RightCommand;
+class JumpCommand;
+
+class Player : public BaseObject, public Observer
+{
+
+public:
+	Player(b2World *world, 
+		   b2Vec2 dimensions, 
+		   b2Vec2 position, 
+		   SDL_Renderer *renderer,
+		   Subject* subject,
+		   MapManager *mapManager);
+
+	~Player();
+	PacketStream* Serialize();
+<<<<<<< HEAD
+	bool Deserialize(PacketStream*);
+=======
+	pair<bool,bool> Deserialize(PacketStream*);
+>>>>>>> 04768fa137e0098ef838912de738f09b87f67134
+	bool UpdateNetworkPlayers(double deltatime);
+	void SetLinearVelocity(b2Vec2 vel);
+	void ApplyForceToCenter(b2Vec2 vel);
+	bool Update(double deltatime);
+	void HandleInput();
+	void Render(b2Vec2 offset);
+	b2Vec2 GetPosition();
+	void SetCanJump(bool toggle);
+	void DecreaseHealth(int difference);
+	void IncreaseRequiredRightLadderContacts();
+	void DecreaseRequiredRightLadderContacts();
+	void IncreaseRequiredLeftLadderContacts();
+	void DecreaseRequiredLeftLadderContacts();
+	void IncreaseJumpContacts();
+	void DecreaseJumpContacts();
+	void IncreaseTopLadderContacts();
+	void DecreaseTopLadderContacts();
+	void IncreaseLadderAboveContacts();
+	void DecreaseLadderAboveContacts();
+	void IncreaseGold();
+	void Bounce();
+	void Kickback(b2Vec2 position);
+	void SetInjured(bool toggle);
+	void Rewind();
+	void RenderExplosion(b2Vec2 offset);
+	void SetAlive(bool alive);
+	void setDraw(bool set);
+	void DecreaseNumBombs();
+	void IncreaseLives();
+	bool CanThrowBomb();
+	bool CheckDead();
+	void AppendNextLevel();
+<<<<<<< HEAD
+
+=======
+	void AppendDoorOpen();
+>>>>>>> 04768fa137e0098ef838912de738f09b87f67134
+	void SetLook(std::string);
+	void SetCurrentImage(std::string type, int index);
+
+	void InceraseNumHourglasses();
+	int GetHourglasses();
+
+	int GetIdleCounter();
+	void SetIdleCounter(int);
+
+	bool GetOnGround() const;
+	bool GetOnLadder() const;
+	bool GetMovesUpLadder() const;
+	bool GetMovesDownLadder() const;
+
+	int GetBombs();
+		
+	void DropBomb();
+
+	b2Vec2 GetVelocity() const;
+	bool GetCanJump() const;
+
+	void UseWhip();
+
+	virtual void OnNotify(char* theEvent) {}
+
+	void SetBehindDoor(bool toggle);
+	bool GetBehindDoor() const;
+
+<<<<<<< HEAD
+	void ExecuteLeftCommand();
+	void ExecuteRightCommand();
+
+=======
+>>>>>>> 04768fa137e0098ef838912de738f09b87f67134
+protected:
+	b2Body *m_body;
+	b2BodyDef m_bodyDef;
+	b2PolygonShape m_shape;
+	b2FixtureDef m_fixtureDef;
+	b2Vec2 m_dimensions;
+	b2PolygonShape m_sensorShape;
+	b2FixtureDef m_sensorDef;
+	b2EdgeShape m_edgeShape;
+	b2PolygonShape m_frictionShape;
+	b2FixtureDef m_frictionDef;
+	b2PolygonShape m_topLadderSensorShape;
+	b2FixtureDef m_topLadderSensorDef;
+	b2PolygonShape m_bottomLadderSensorShape;
+	b2FixtureDef m_bottomLadderSensorDef;
+	b2PolygonShape m_jumpSensorShape;
+	b2FixtureDef m_jumpLadderSensorDef;
+
+	b2World *m_world;
+
+	SDL_Renderer *m_renderer;
+	LeftCommand *m_buttonLeft;
+	RightCommand *m_buttonRight;
+	JumpCommand *m_buttonX;
+
+	MapManager *m_mapManager;
+
+	int m_health;
+	bool m_alive;
+	bool m_injured;
+	bool m_buttonXPrevPressed;
+	bool m_buttonSPrevPressed;
+	bool m_rewindPressed;
+	bool m_isSprinting;
+	bool m_shouldDraw;
+	int m_numJumpContacts;
+	int m_numRequiredRightLadderContacts;
+	int m_numRequiredLeftLadderContacts;
+	int m_numTopLadderContacts;
+	int m_numLadderAboveContacts;
+	bool m_onLadder;
+	
+	int m_numHourglasses;
+	
+	bool m_whipPrevUsed;
+
+	int count;
+	int m_idleCounter;
+
+	std::vector<Bomb*> bombs;
+	std::vector<Explosion*> explosions;
+
+	PacketStream* m_packetStream;
+	void AppendBombToPStream(b2Vec2 pos, b2Vec2 dir);
+	vector<string> splitString(std::string s);
+
+	Memento *m_memento;
+
+	static FSM s_fsm;
+	PlayerState *m_state; 
+	std::string m_direction;
+	std::string m_event;
+
+	Subject *m_subject;
+	bool m_behindDoor;
+<<<<<<< HEAD
+	bool m_dying;
+=======
+>>>>>>> 04768fa137e0098ef838912de738f09b87f67134
+};
+
+#include "LeftCommand.h"
+#include "RightCommand.h"
+#include "JumpCommand.h"

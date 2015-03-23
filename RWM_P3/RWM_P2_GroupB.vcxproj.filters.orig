@@ -1,0 +1,649 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="Source Files\TMX">
+      <UniqueIdentifier>{52fab5f6-ba79-42a8-ab28-92725d634ac4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\PlayerStates">
+      <UniqueIdentifier>{cc8b4ff9-9128-4316-acb5-8896e6bfd11e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\PlayerState">
+      <UniqueIdentifier>{21249123-8383-47a8-b50f-0274af0844d5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\BatState">
+      <UniqueIdentifier>{99093ee4-bf24-4219-a615-a1d3b9b4db17}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\BatState">
+      <UniqueIdentifier>{55495bc9-f897-4860-b3c5-30773c6878f0}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Main.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Game.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="CollisionListener.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="KeyboardManager.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Player.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="RightCommand.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="LeftCommand.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="JumpCommand.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="DirtBlock.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="BlockParticles.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="MapManager.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="SDL_dev\TmxParser\zlib\adler32.c">
+      <Filter>Source Files\TMX</Filter>
+    </ClCompile>
+    <ClCompile Include="SDL_dev\TmxParser\base64\base64.cpp">
+      <Filter>Source Files\TMX</Filter>
+    </ClCompile>
+    <ClCompile Include="SDL_dev\TmxParser\zlib\deflate.c">
+      <Filter>Source Files\TMX</Filter>
+    </ClCompile>
+    <ClCompile Include="SDL_dev\TmxParser\zlib\compress.c">
+      <Filter>Source Files\TMX</Filter>
+    </ClCompile>
+    <ClCompile Include="SDL_dev\TmxParser\zlib\crc32.c">
+      <Filter>Source Files\TMX</Filter>
+    </ClCompile>
+    <ClCompile Include="SDL_dev\TmxParser\zlib\gzclose.c">
+      <Filter>Source Files\TMX</Filter>
+    </ClCompile>
+    <ClCompile Include="SDL_dev\TmxParser\zlib\gzlib.c">
+      <Filter>Source Files\TMX</Filter>
+    </ClCompile>
+    <ClCompile Include="SDL_dev\TmxParser\zlib\gzread.c">
+      <Filter>Source Files\TMX</Filter>
+    </ClCompile>
+    <ClCompile Include="SDL_dev\TmxParser\zlib\gzwrite.c">
+      <Filter>Source Files\TMX</Filter>
+    </ClCompile>
+    <ClCompile Include="SDL_dev\TmxParser\zlib\infback.c">
+      <Filter>Source Files\TMX</Filter>
+    </ClCompile>
+    <ClCompile Include="SDL_dev\TmxParser\zlib\inffast.c">
+      <Filter>Source Files\TMX</Filter>
+    </ClCompile>
+    <ClCompile Include="SDL_dev\TmxParser\zlib\inflate.c">
+      <Filter>Source Files\TMX</Filter>
+    </ClCompile>
+    <ClCompile Include="SDL_dev\TmxParser\zlib\inftrees.c">
+      <Filter>Source Files\TMX</Filter>
+    </ClCompile>
+    <ClCompile Include="SDL_dev\TmxParser\tinyxml\tinystr.cpp">
+      <Filter>Source Files\TMX</Filter>
+    </ClCompile>
+    <ClCompile Include="SDL_dev\TmxParser\tinyxml\tinyxml.cpp">
+      <Filter>Source Files\TMX</Filter>
+    </ClCompile>
+    <ClCompile Include="SDL_dev\TmxParser\tinyxml\tinyxmlerror.cpp">
+      <Filter>Source Files\TMX</Filter>
+    </ClCompile>
+    <ClCompile Include="SDL_dev\TmxParser\tinyxml\tinyxmlparser.cpp">
+      <Filter>Source Files\TMX</Filter>
+    </ClCompile>
+    <ClCompile Include="SDL_dev\TmxParser\TmxEllipse.cpp">
+      <Filter>Source Files\TMX</Filter>
+    </ClCompile>
+    <ClCompile Include="SDL_dev\TmxParser\TmxImage.cpp">
+      <Filter>Source Files\TMX</Filter>
+    </ClCompile>
+    <ClCompile Include="SDL_dev\TmxParser\TmxImageLayer.cpp">
+      <Filter>Source Files\TMX</Filter>
+    </ClCompile>
+    <ClCompile Include="SDL_dev\TmxParser\TmxLayer.cpp">
+      <Filter>Source Files\TMX</Filter>
+    </ClCompile>
+    <ClCompile Include="SDL_dev\TmxParser\TmxMap.cpp">
+      <Filter>Source Files\TMX</Filter>
+    </ClCompile>
+    <ClCompile Include="SDL_dev\TmxParser\TmxObject.cpp">
+      <Filter>Source Files\TMX</Filter>
+    </ClCompile>
+    <ClCompile Include="SDL_dev\TmxParser\TmxObjectGroup.cpp">
+      <Filter>Source Files\TMX</Filter>
+    </ClCompile>
+    <ClCompile Include="SDL_dev\TmxParser\TmxPolygon.cpp">
+      <Filter>Source Files\TMX</Filter>
+    </ClCompile>
+    <ClCompile Include="SDL_dev\TmxParser\TmxPolyline.cpp">
+      <Filter>Source Files\TMX</Filter>
+    </ClCompile>
+    <ClCompile Include="SDL_dev\TmxParser\TmxPropertySet.cpp">
+      <Filter>Source Files\TMX</Filter>
+    </ClCompile>
+    <ClCompile Include="SDL_dev\TmxParser\TmxTile.cpp">
+      <Filter>Source Files\TMX</Filter>
+    </ClCompile>
+    <ClCompile Include="SDL_dev\TmxParser\TmxTileset.cpp">
+      <Filter>Source Files\TMX</Filter>
+    </ClCompile>
+    <ClCompile Include="SDL_dev\TmxParser\TmxUtil.cpp">
+      <Filter>Source Files\TMX</Filter>
+    </ClCompile>
+    <ClCompile Include="SDL_dev\TmxParser\zlib\trees.c">
+      <Filter>Source Files\TMX</Filter>
+    </ClCompile>
+    <ClCompile Include="SDL_dev\TmxParser\zlib\uncompr.c">
+      <Filter>Source Files\TMX</Filter>
+    </ClCompile>
+    <ClCompile Include="SDL_dev\TmxParser\zlib\zutil.c">
+      <Filter>Source Files\TMX</Filter>
+    </ClCompile>
+    <ClCompile Include="TileBase.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Room.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="MainMenu.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Snake.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Button.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="SoundManager.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Ladder.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="BgBlock.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Bomb.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Memento.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="PacketStream.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Door.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="MultiplayerGame.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Net.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="AnimationManager.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="EnemyManager.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="FSM.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Pickup.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Torch.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Spikes.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ArrowTrap.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Explosion.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Arrow.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="HUD.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="OptionsMenu.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="TextBox.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="MultiMenu.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Scarab.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Mummy.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Bat.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="PlayerClimb.cpp">
+      <Filter>Source Files\PlayerState</Filter>
+    </ClCompile>
+    <ClCompile Include="PlayerDying.cpp">
+      <Filter>Source Files\PlayerState</Filter>
+    </ClCompile>
+    <ClCompile Include="PlayerGrab.cpp">
+      <Filter>Source Files\PlayerState</Filter>
+    </ClCompile>
+    <ClCompile Include="PlayerIdle1.cpp">
+      <Filter>Source Files\PlayerState</Filter>
+    </ClCompile>
+    <ClCompile Include="PlayerIdle2.cpp">
+      <Filter>Source Files\PlayerState</Filter>
+    </ClCompile>
+    <ClCompile Include="PlayerIdle3.cpp">
+      <Filter>Source Files\PlayerState</Filter>
+    </ClCompile>
+    <ClCompile Include="PlayerJump.cpp">
+      <Filter>Source Files\PlayerState</Filter>
+    </ClCompile>
+    <ClCompile Include="PlayerSprinting.cpp">
+      <Filter>Source Files\PlayerState</Filter>
+    </ClCompile>
+    <ClCompile Include="PlayerSprintJump.cpp">
+      <Filter>Source Files\PlayerState</Filter>
+    </ClCompile>
+    <ClCompile Include="PlayerThrowBomb.cpp">
+      <Filter>Source Files\PlayerState</Filter>
+    </ClCompile>
+    <ClCompile Include="PlayerWalk.cpp">
+      <Filter>Source Files\PlayerState</Filter>
+    </ClCompile>
+    <ClCompile Include="BatFlyToCeiling.cpp">
+      <Filter>Source Files\BatState</Filter>
+    </ClCompile>
+    <ClCompile Include="BatFlyTowardPlayer.cpp">
+      <Filter>Source Files\BatState</Filter>
+    </ClCompile>
+    <ClCompile Include="BatSleep.cpp">
+      <Filter>Source Files\BatState</Filter>
+    </ClCompile>
+    <ClCompile Include="Achievement.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Achievements.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="EndingMenu.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="EnemyFactory.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ServerHelper.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Subject.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="DoorSwitch.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="RaycastListener.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+<<<<<<< HEAD
+    <ClCompile Include="PlayerWhipState.cpp">
+      <Filter>Source Files\PlayerState</Filter>
+=======
+    <ClCompile Include="Life.cpp">
+      <Filter>Source Files</Filter>
+>>>>>>> 04768fa137e0098ef838912de738f09b87f67134
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Game.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="BaseObject.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="KeyboardManager.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="CollisionListener.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Command.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Player.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="RightCommand.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="LeftCommand.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="JumpCommand.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Block.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Constants.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="DirtBlock.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="BlockParticles.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="MapManager.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="SDL_dev\TmxParser\base64\base64.h">
+      <Filter>Source Files\TMX</Filter>
+    </ClInclude>
+    <ClInclude Include="SDL_dev\TmxParser\zlib\crc32.h">
+      <Filter>Source Files\TMX</Filter>
+    </ClInclude>
+    <ClInclude Include="SDL_dev\TmxParser\zlib\deflate.h">
+      <Filter>Source Files\TMX</Filter>
+    </ClInclude>
+    <ClInclude Include="SDL_dev\TmxParser\zlib\gzguts.h">
+      <Filter>Source Files\TMX</Filter>
+    </ClInclude>
+    <ClInclude Include="SDL_dev\TmxParser\zlib\inffast.h">
+      <Filter>Source Files\TMX</Filter>
+    </ClInclude>
+    <ClInclude Include="SDL_dev\TmxParser\zlib\inffixed.h">
+      <Filter>Source Files\TMX</Filter>
+    </ClInclude>
+    <ClInclude Include="SDL_dev\TmxParser\zlib\inflate.h">
+      <Filter>Source Files\TMX</Filter>
+    </ClInclude>
+    <ClInclude Include="SDL_dev\TmxParser\zlib\inftrees.h">
+      <Filter>Source Files\TMX</Filter>
+    </ClInclude>
+    <ClInclude Include="SDL_dev\TmxParser\tinyxml\tinystr.h">
+      <Filter>Source Files\TMX</Filter>
+    </ClInclude>
+    <ClInclude Include="SDL_dev\TmxParser\tinyxml\tinyxml.h">
+      <Filter>Source Files\TMX</Filter>
+    </ClInclude>
+    <ClInclude Include="SDL_dev\TmxParser\Tmx.h">
+      <Filter>Source Files\TMX</Filter>
+    </ClInclude>
+    <ClInclude Include="SDL_dev\TmxParser\TmxEllipse.h">
+      <Filter>Source Files\TMX</Filter>
+    </ClInclude>
+    <ClInclude Include="SDL_dev\TmxParser\TmxImage.h">
+      <Filter>Source Files\TMX</Filter>
+    </ClInclude>
+    <ClInclude Include="SDL_dev\TmxParser\TmxImageLayer.h">
+      <Filter>Source Files\TMX</Filter>
+    </ClInclude>
+    <ClInclude Include="SDL_dev\TmxParser\TmxLayer.h">
+      <Filter>Source Files\TMX</Filter>
+    </ClInclude>
+    <ClInclude Include="SDL_dev\TmxParser\TmxMap.h">
+      <Filter>Source Files\TMX</Filter>
+    </ClInclude>
+    <ClInclude Include="SDL_dev\TmxParser\TmxMapTile.h">
+      <Filter>Source Files\TMX</Filter>
+    </ClInclude>
+    <ClInclude Include="SDL_dev\TmxParser\TmxObject.h">
+      <Filter>Source Files\TMX</Filter>
+    </ClInclude>
+    <ClInclude Include="SDL_dev\TmxParser\TmxObjectGroup.h">
+      <Filter>Source Files\TMX</Filter>
+    </ClInclude>
+    <ClInclude Include="SDL_dev\TmxParser\TmxPoint.h">
+      <Filter>Source Files\TMX</Filter>
+    </ClInclude>
+    <ClInclude Include="SDL_dev\TmxParser\TmxPolygon.h">
+      <Filter>Source Files\TMX</Filter>
+    </ClInclude>
+    <ClInclude Include="SDL_dev\TmxParser\TmxPolyline.h">
+      <Filter>Source Files\TMX</Filter>
+    </ClInclude>
+    <ClInclude Include="SDL_dev\TmxParser\TmxPropertySet.h">
+      <Filter>Source Files\TMX</Filter>
+    </ClInclude>
+    <ClInclude Include="SDL_dev\TmxParser\TmxTile.h">
+      <Filter>Source Files\TMX</Filter>
+    </ClInclude>
+    <ClInclude Include="SDL_dev\TmxParser\TmxTileset.h">
+      <Filter>Source Files\TMX</Filter>
+    </ClInclude>
+    <ClInclude Include="SDL_dev\TmxParser\TmxUtil.h">
+      <Filter>Source Files\TMX</Filter>
+    </ClInclude>
+    <ClInclude Include="SDL_dev\TmxParser\zlib\trees.h">
+      <Filter>Source Files\TMX</Filter>
+    </ClInclude>
+    <ClInclude Include="SDL_dev\TmxParser\zlib\zconf.h">
+      <Filter>Source Files\TMX</Filter>
+    </ClInclude>
+    <ClInclude Include="SDL_dev\TmxParser\zlib\zlib.h">
+      <Filter>Source Files\TMX</Filter>
+    </ClInclude>
+    <ClInclude Include="SDL_dev\TmxParser\zlib\zutil.h">
+      <Filter>Source Files\TMX</Filter>
+    </ClInclude>
+    <ClInclude Include="TileBase.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Room.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="MainMenu.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Snake.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Button.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="SoundManager.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Ladder.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="BgBlock.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Bomb.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Memento.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="PacketStream.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Door.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="MultiplayerGame.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Net.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="AnimationManager.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="EnemyManager.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="FSM.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="SnakeQuery.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Pickup.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Torch.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Spikes.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ArrowTrap.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Explosion.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Arrow.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="HUD.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="OptionsMenu.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="TextBox.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="MummyQuery.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="MultiMenu.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Scarab.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Mummy.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Bat.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="BatQuery.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="PlayerClimb.h">
+      <Filter>Header Files\PlayerStates</Filter>
+    </ClInclude>
+    <ClInclude Include="PlayerDying.h">
+      <Filter>Header Files\PlayerStates</Filter>
+    </ClInclude>
+    <ClInclude Include="PlayerGrab.h">
+      <Filter>Header Files\PlayerStates</Filter>
+    </ClInclude>
+    <ClInclude Include="PlayerIdle1.h">
+      <Filter>Header Files\PlayerStates</Filter>
+    </ClInclude>
+    <ClInclude Include="PlayerIdle2.h">
+      <Filter>Header Files\PlayerStates</Filter>
+    </ClInclude>
+    <ClInclude Include="PlayerIdle3.h">
+      <Filter>Header Files\PlayerStates</Filter>
+    </ClInclude>
+    <ClInclude Include="PlayerJump.h">
+      <Filter>Header Files\PlayerStates</Filter>
+    </ClInclude>
+    <ClInclude Include="PlayerSprinting.h">
+      <Filter>Header Files\PlayerStates</Filter>
+    </ClInclude>
+    <ClInclude Include="PlayerSprintJump.h">
+      <Filter>Header Files\PlayerStates</Filter>
+    </ClInclude>
+    <ClInclude Include="PlayerState.h">
+      <Filter>Header Files\PlayerStates</Filter>
+    </ClInclude>
+    <ClInclude Include="PlayerThrowBomb.h">
+      <Filter>Header Files\PlayerStates</Filter>
+    </ClInclude>
+    <ClInclude Include="PlayerWalk.h">
+      <Filter>Header Files\PlayerStates</Filter>
+    </ClInclude>
+    <ClInclude Include="BatFlyToCeiling.h">
+      <Filter>Header Files\BatState</Filter>
+    </ClInclude>
+    <ClInclude Include="BatFlyTowardPlayer.h">
+      <Filter>Header Files\BatState</Filter>
+    </ClInclude>
+    <ClInclude Include="BatState.h">
+      <Filter>Header Files\BatState</Filter>
+    </ClInclude>
+    <ClInclude Include="BatSleep.h">
+      <Filter>Header Files\BatState</Filter>
+    </ClInclude>
+    <ClInclude Include="Achievement.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Achievements.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="EndingMenu.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="EnemyFactory.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Factory.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Observer.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ServerHelper.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Subject.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="DoorSwitch.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="RaycastListener.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+<<<<<<< HEAD
+    <ClInclude Include="PlayerWhipState.h">
+      <Filter>Header Files\PlayerStates</Filter>
+=======
+    <ClInclude Include="Life.h">
+      <Filter>Header Files</Filter>
+>>>>>>> 04768fa137e0098ef838912de738f09b87f67134
+    </ClInclude>
+  </ItemGroup>
+</Project>
